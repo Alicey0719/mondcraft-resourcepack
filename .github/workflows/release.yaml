@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Zip repository
+      run: zip -r resource-pack.zip . --exclude='.git*' --exclude='README.md' --exclude='LICENSE' --exclude='renovate.json'
+
+    - name: Calculate SHA-1
+      id: sha1
+      run: echo "::set-output name=sha1::$(sha1sum resource-pack.zip | awk '{print $1}')"
+
+    - name: show sha1
+      run: echo ${{ steps.sha1.outputs.sha1 }}
+
+    - name: Get Date
+      id: date
+      run: echo "::set-output name=date::$(date +'%Y%m%d%H%M')"
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.date.outputs.date }}
+        release_name: ${{ steps.sha1.outputs.sha1 }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: resource-pack.zip
+        asset_name: resource-pack.zip
+        asset_content_type: application/zip
+        asset_sha1: ${{ steps.sha1.outputs.sha1 }}
+
+    - name: discord notification
+      uses: docker://alicey/gha2discord:latest
+      env:
+          WEBHOOK_URL: ${{ secrets.DC_WEBHOOK_URL }}
+          MESSAGE_USERNAME: "GitHub Actions"
+          MESSAGE_AVATAR_URL: ""
+          MESSAGE_AUTHORNAME: "Minecraft resource pack release"
+          MESSAGE_AUTHORICON_URL: ""
+          MESSAGE_COMMENT: "sha1: ${{ steps.sha1.outputs.sha1 }}\ndate: ${{ steps.date.outputs.date }}\n${{ steps.create_release.outputs.html_url}}"
+      with:
+          entrypoint: "python3"
+          args: "/opt/app/app.py"

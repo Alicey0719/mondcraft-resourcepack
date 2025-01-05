@@ -1,0 +1,36 @@
+{
+    "format_version": 1,
+    "header": {
+        "name": "ツキさま村 ResourcePack",
+        "uuid": "b490c928-7967-e992-6077-8e379b9e3028",
+        "version": [
+            1,
+            0,
+            0
+        ],
+        "description": "ツキさま村 ResourcePack",
+        "min_engine_version": [
+            1,
+            2,
+            6
+        ]
+    },
+    "modules": [
+        {
+            "type": "resources",
+            "uuid": "9e95d803-3f39-b2b6-f7ab-78619970cc55",
+            "version": [
+                1,
+                0,
+                0
+            ],
+            "description": "ツキさま村 ResourcePack"
+        }
+    ],
+    "metadata": {
+        "authors": [
+            "Alicey"
+        ],
+        "url": "https://alicey.dev"
+    }
+}
