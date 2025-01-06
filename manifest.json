@@ -6,13 +6,13 @@
         "version": [
             1,
             0,
-            1
+            2
         ],
         "description": "ツキさま村 ResourcePack",
         "min_engine_version": [
             1,
-            2,
-            6
+            21,
+            4
         ]
     },
     "modules": [
@@ -22,7 +22,7 @@
             "version": [
                 1,
                 0,
-                1
+                2
             ],
             "description": "ツキさま村 ResourcePack"
         }
