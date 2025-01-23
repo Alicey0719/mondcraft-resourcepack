@@ -1,0 +1,10 @@
+{
+    "music.disc.soraniutau": {
+        "sounds": [
+            {
+                "name": "custom/soraniutau",
+                "stream": true
+            }
+        ]
+    }
+}
