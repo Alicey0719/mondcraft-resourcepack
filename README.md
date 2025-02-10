@@ -26,13 +26,13 @@
 | graham                | 1:2          | 1x2                         | 16x32                | 1    |
 | match                 | 1:2          | 1x2                         | 16x32                |      |
 | bust                  | 2:2 (1:1)    | 2x2                         | 32x32                | 1    |
-| stage                 | 2:2 (1:1)    | 2x2                         | 32x32                |      |
+| stage                 | 2:2 (1:1)    | 2x2                         | 32x32                | 1    |
 | void                  | 2:2 (1:1)    | 2x2                         | 32x32                |      |
 | skull_and_roses       | 2:2 (1:1)    | 2x2                         | 32x32                |      |
 | wither                | 2:2 (1:1)    | 2x2                         | 32x32                |      |
 | fighters              | 4:2 (2:1)    | 4x2                         | 64x32                | 1    |
 | pointer               | 4:4 (1:1)    | 4x4                         | 64x64                |      |
 | pigscene              | 4:4 (1:1)    | 4x4                         | 64x64                |      |
-| burning_skull         | 4:4 (1:1)    | 4x4                         | 64x64                |      |
+| burning_skull         | 4:4 (1:1)    | 4x4                         | 64x64                | 1    |
 | skeleton              | 4:3          | 4x3                         | 64x48                |      |
 | donkey_kong           | 4:3          | 4x3                         | 64x48                |      |
